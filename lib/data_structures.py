@@ -24,12 +24,12 @@ result = get_names(spicy_foods)
 print(result)
 
 def get_spiciest_foods(spicy_foods):
-    spiciest_foods = [food ["name"] for food in spicy_foods if food ["heat_level"] > 5]
+    spiciest_foods = [food for food in spicy_foods if food ["heat_level"] > 5]
     return spiciest_foods
 
 result = get_spiciest_foods(spicy_foods)
-print(result)
-
+for food in result:
+    print(f'Name: {food["name"]}, Cuisine: {food["cuisine"]}, Heat Level: {food["heat_level"]}')
 
 
 
@@ -48,7 +48,7 @@ def get_spicy_food_by_cuisine(spicy_foods, cuisine):
         if food["cuisine"] == cuisine:
             return food
         
-        return None
+    return None
     
 cuisine = "American"
 result = get_spicy_food_by_cuisine(spicy_foods, cuisine)
@@ -83,15 +83,7 @@ result = get_average_heat_level(spicy_foods)
 print(result)
 
 def create_spicy_food(spicy_foods, spicy_food):
-        spicy_foods.append(new_spicy_food)
-
-new_spicy_food = {
-    "name": "Spicy Ramen",
-    "cuisine": "Japanese",
-    "heat_level": 7,
-}
-
-create_spicy_food(spicy_foods, new_spicy_food)
-
-print(spicy_foods)
-
+    # Create a new list from the existing list to avoid modifying the original list.
+    new_spicy_foods_list = spicy_foods.copy()
+    new_spicy_foods_list.append(spicy_food)
+    return new_spicy_foods_list
